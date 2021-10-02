@@ -17,6 +17,7 @@ class ResponseMessageService {
     static String divide = "Divide input by type"
     static String type = "type"
     static String input = "input"
+    static String invalidMessage = "Invalid Input"
 
     Integer integerNumber = 0
 
@@ -25,8 +26,11 @@ class ResponseMessageService {
             integerNumber = number.toInteger()
         }
         catch (Exception e) {
-            log.info("Invalid input")
-            return "Invalid Input"
+            log.info(invalidMessage)
+            return invalidMessage
+        }
+        if (integerNumber < 0) {
+            return invalidMessage
         }
         String isFuzz = validatorService.isValid(integerNumber, fizzBuzzConfig.fizzComparator) ? "1" : "0"
         String isBuzz = validatorService.isValid(integerNumber, fizzBuzzConfig.buzzComparator) ? "1" : "0"

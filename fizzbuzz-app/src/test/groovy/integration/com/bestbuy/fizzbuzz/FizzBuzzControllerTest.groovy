@@ -13,12 +13,9 @@ import spock.lang.Shared
 import spock.lang.Specification
 import spock.lang.Unroll
 
-@Unroll
 @SpringBootTest(classes = FizzBuzzApplication,
     webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @RunWith(SpringRunner)
-//@EmbeddedKafka(partitions = 1, controlledShutdown = false,
-//    brokerProperties = ["listeners=PLAINTEXT://localhost:3333", "port=3333"])
 @DirtiesContext
 @ActiveProfiles("test")
 class FizzBuzzControllerTest extends Specification {
@@ -50,16 +47,17 @@ class FizzBuzzControllerTest extends Specification {
     @Autowired
     private TestRestTemplate restTemplate
 
-
+    @Unroll
     def "call fizz buzz api - #descr"() {
         when:
         String output = restTemplate.getForEntity(url + "?input=" + inputs, String).body
         then:
         output == expected
         where:
-        descr | inputs                               | expected
-        1     | ["3"]                                | fizzBuzzConfig.fizzMessage
-        2     | ["5"]                                | fizzBuzzConfig.buzzMessage
-        3     | ["1", "3", "5", "", "15", "A", "23"] | expectedResult
+        descr     | inputs                               | expected
+        "input 1" | ["3"]                                | fizzBuzzConfig.fizzMessage
+        "input 2" | ["5"]                                | fizzBuzzConfig.buzzMessage
+        "input 3" | ["1", "3", "5", "", "15", "A", "23"] | expectedResult
+        "input 4" | ["-3"]                               | "Invalid Input"
     }
 }
