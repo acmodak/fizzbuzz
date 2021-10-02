@@ -5,9 +5,9 @@ Following are some assumptions:
 2) I expected input will be a query param in format that was in example
 
 #Components:
-fizzbuzz-app: this is the main application comprises services, controller and a kafka producer
-fizzbuzz-client: this a retrofit client for the api
-fizzbuzz-consumer: kafka consumer to consume fizz buzz messages
+1) fizzbuzz-app: this is the main application comprises services, controller and a kafka producer
+2) fizzbuzz-client: this a retrofit client for the api
+3) fizzbuzz-consumer: kafka consumer to consume fizz buzz messages
 
 #To run the application:
 1) ./gradlew clean build to buid the application
