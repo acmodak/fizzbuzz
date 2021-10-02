@@ -1,0 +1,16 @@
+# http://editorconfig.org
+root = true
+
+[*]
+indent_style = space
+indent_size = 4
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+continuation_indent_size = 4
+insert_final_newline = true
+
+# 2 space indentation
+[*.{xml,html,gradle,json,yml}]
+indent_style = space
+indent_size = 2

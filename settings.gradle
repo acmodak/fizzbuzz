@@ -1,0 +1,5 @@
+rootProject.name = 'fizzbuzz'
+include 'fizzbuzz-app'
+include 'fizzbuzz-client'
+include 'fizzbuzz-consumer'
+

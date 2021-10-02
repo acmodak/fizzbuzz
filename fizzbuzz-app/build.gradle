@@ -1,0 +1,50 @@
+plugins {
+	id 'org.springframework.boot' version '2.5.5'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'groovy'
+	id 'codenarc'
+  id 'application'
+}
+
+group = 'com.bestbuy'
+sourceCompatibility = '11'
+mainClassName = 'com.bestbuy.fizzbuzz.app.FizzBuzzApplication'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation "org.springframework.boot:spring-boot-starter-web"
+	implementation "org.codenarc:CodeNarc:1.1"
+	implementation "org.springframework.boot:spring-boot-starter-webflux"
+	implementation 'org.codehaus.groovy:groovy'
+	implementation "org.springframework.kafka:spring-kafka"
+
+  //testcontainer
+  implementation platform('org.testcontainers:testcontainers-bom:1.15.3')
+  implementation 'org.testcontainers:testcontainers'
+  implementation 'org.testcontainers:postgresql'
+  implementation 'org.testcontainers:junit-jupiter'
+  implementation 'org.testcontainers:kafka'
+  implementation "org.springframework.boot:spring-boot-configuration-processor"
+
+
+	testImplementation "org.springframework.boot:spring-boot-starter-test"
+	testImplementation 'io.projectreactor:reactor-test'
+	testImplementation "org.springframework.kafka:spring-kafka-test"
+  testImplementation group: 'org.spockframework', name: 'spock-core', version: '2.0-groovy-3.0'
+  testImplementation group: 'org.spockframework', name: 'spock-spring', version: '2.0-groovy-3.0'
+  testImplementation('org.junit.jupiter:junit-jupiter-api:5.8.1')
+  testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.8.1')
+}
+
+codenarcMain {
+	configFile = file("${rootProject.projectDir}/config/codenarc/codenarc-main.groovy")
+}
+codenarcTest {
+	configFile = file("${rootProject.projectDir}/config/codenarc/codenarc-test.groovy")
+}
+tasks.test {
+  useJUnitPlatform()
+}

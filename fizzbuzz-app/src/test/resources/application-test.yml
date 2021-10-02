@@ -1,0 +1,24 @@
+server:
+  servlet:
+    context-path: /fizzbuzz/v1
+  port: 8080
+
+fizzbuzz:
+  fizzComparator: "3"
+  buzzComparator: "5"
+  fizzMessage : "Fizz"
+  buzzMessage: "Buzz"
+  fizzBuzzMessage: "FizzBuzz"
+
+spring:
+  kafka:
+    consumer:
+      group-id: bestbuy
+      auto-offset-reset: earliest
+    # change this property if you are using your own
+    # Kafka cluster or your Docker IP is different
+    bootstrap-servers: localhost:9092
+    value-serializer: org.springframework.kafka.support.serializer.StrinSerializer
+
+kafka:
+  topic: "fizz-buzz"
