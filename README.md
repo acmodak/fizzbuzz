@@ -10,9 +10,9 @@ Following are some assumptions:
 3) fizzbuzz-consumer: kafka consumer to consume fizz buzz messages
 
 #To run the application:
-1) ./gradlew clean build to buid the application
-2) Please make sure you have docker installed.
-3) run docker-compose up -d
+1) Please make sure you have docker installed.
+2) run docker-compose up -d
+3) ./gradlew clean build to buid the application
 4) run docker build -f fizzbuzz-app/Dockerfile -t fizzbuzz-app:1 .
 5) docker run -p 8080:8080 fizzbuzz-app:1 &
 
